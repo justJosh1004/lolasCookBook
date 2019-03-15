@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 
-const recipes = require('/routes/api/recipes');
+const recipes = require('./routes/api/recipes');
 
 const app = express();
 
@@ -13,12 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
-const db = require('./config/keys');
+const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
   .connect(db, { useNewUrlParser: true })
-  .then(() => console.log('MongoDB Connected').catch(err => console.log(err)));
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 // // Passport Middleware
 // app.use(passport.initialize());
