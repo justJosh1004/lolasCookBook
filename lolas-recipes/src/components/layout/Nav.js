@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Menu } from 'semantic-ui-react';
 
 export default class Nav extends Component {
@@ -17,11 +19,15 @@ export default class Nav extends Component {
       <div>
         <Menu attached="top" tabular borderless>
           <Menu.Item
+            as={Link}
+            to="/"
             name="home"
             active={activeItem === 'home'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
+            as={Link} // This is component Augmentation
+            to="/recipes"
             name="recipes"
             active={activeItem === 'recipes'}
             onClick={this.handleItemClick}

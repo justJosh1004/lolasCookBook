@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Body() {
+export default function Home() {
   const currentYear = new Date().getFullYear();
   let yearsAgo = currentYear - 2003;
 
