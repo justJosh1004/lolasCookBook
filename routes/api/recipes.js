@@ -34,8 +34,6 @@ router.get('/', (req, res) => {
 // @access  Private
 router.post('/', (req, res) => {
   const recipeFields = {};
-  console.log('##################################');
-  console.log(req.recipe);
 
   recipeFields.recipe = req.body.name;
   if (req.body.name) recipeFields.name = req.body.name;
@@ -51,7 +49,6 @@ router.post('/', (req, res) => {
   if (req.body.text) recipeFields.steps.text = req.body.text;
 
   Recipe.findOne({ name: req.body.name }).then(recipe => {
-    console.log('The Recipe: ', recipe);
     if (recipe) {
       Recipe.findOneAndUpdate(
         { name: req.body.name },
