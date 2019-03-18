@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Validation
+const validateRecipeInput = require('../../validation/recipe');
+
 // Load Recipes Model
 const Recipe = require('../../models/Recipe');
 // const Recipes = require('../../models/Recipes');
@@ -34,6 +37,12 @@ router.get('/', (req, res) => {
 // @access  Private
 router.post('/', (req, res) => {
   const recipeFields = {};
+
+  const { errors, isValid } = validateRecipeInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
   recipeFields.recipe = req.body.name;
   if (req.body.name) recipeFields.name = req.body.name;
