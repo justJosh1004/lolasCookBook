@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 // Create Recipe Schema
 const RecipeSchema = new Schema({
   name: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   ingredients: [
     {
-      name: {
-        type: String,
-        require: true
+      ing: {
+        type: String
+        // require: true
       },
       quantity: {
         type: String
@@ -23,9 +23,13 @@ const RecipeSchema = new Schema({
   ],
   steps: [
     {
+      step: {
+        type: String
+        // required: true
+      },
       text: {
-        type: String,
-        required: true
+        type: String
+        // required: true
       }
     }
   ]
