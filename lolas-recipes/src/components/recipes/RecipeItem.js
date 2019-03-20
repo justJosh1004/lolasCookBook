@@ -9,18 +9,27 @@ class RecipeItem extends Component {
       ))}
     </div>
   );
+
+  showSteps = steps => (
+    <div>
+      {steps.map(step => (
+        <p key={step.step}>{step.text}</p>
+      ))}
+    </div>
+  );
+
   render() {
     const { recipe } = this.props;
     return (
       <Card>
         <Card.Content>
-          {/* <Card.Header content="A recipe!" /> */}
           <Card.Header content={recipe.name} />
           <h4>Ingredients:</h4>
           <Card.Description
             content={this.showIngredients(recipe.ingredients)}
           />
-          {/* <Card.Description content={recipe.steps} /> */}
+          <h4>Steps:</h4>
+          <Card.Description content={this.showSteps(recipe.steps)} />
         </Card.Content>
       </Card>
     );
