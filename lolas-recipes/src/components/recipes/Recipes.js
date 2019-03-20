@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Card, Dimmer, Loader, Segment } from 'semantic-ui-react';
+import { Card, Dimmer, Loader } from 'semantic-ui-react';
 
 import { getAllRecipes } from '../../actions/recipeActions';
+import RecipeItem from './RecipeItem';
 
 class Recipes extends Component {
   componentDidMount = () => {
@@ -11,21 +12,33 @@ class Recipes extends Component {
   };
   setLoader = () => {
     return (
-      <Dimmer active inverted inline>
+      <Dimmer active inverted>
         <Loader size="massive">Loading Recipes...</Loader>
       </Dimmer>
     );
   };
 
   render() {
-    const { recipe } = this.props;
-    console.log(recipe);
+    const { recipes, loading } = this.props.recipe;
+    console.log(recipes);
     let recipeItems;
 
-    if (recipe === null || recipe.loading) {
+    if (recipes === null || loading) {
       recipeItems = this.setLoader();
     } else {
-      recipeItems = <div>Put Recipes Here</div>;
+      if (recipes.length > 0) {
+        return (
+          <div style={{ marginTop: '10px' }}>
+            <Card.Group>
+              {
+                (recipeItems = recipes.map(recipe => (
+                  <RecipeItem key={recipe._id} recipe={recipe} />
+                )))
+              }
+            </Card.Group>
+          </div>
+        );
+      }
     }
 
     return <div>{recipeItems}</div>;
