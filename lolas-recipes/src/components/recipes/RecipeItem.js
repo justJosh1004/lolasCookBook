@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, List } from 'semantic-ui-react';
 
 class RecipeItem extends Component {
+  showingredientDetail = ing => {
+    if (ing.quantity && ing.measurement) {
+      return (
+        <p>
+          {ing.quantity} {ing.measurement}
+        </p>
+      );
+    }
+  };
+
   showIngredients = ingredients => (
-    <div>
-      {ingredients.map(ing => (
-        <p key={ing.ing}>{ing.ing}</p>
-      ))}
-    </div>
+    <List animated relaxed>
+      <List.Item>
+        {ingredients.map(ing => (
+          <List.Content key={ing.ing}>
+            <List.Header>{ing.ing}</List.Header>
+            <List.Description>
+              {this.showingredientDetail(ing)}
+            </List.Description>
+          </List.Content>
+        ))}
+      </List.Item>
+    </List>
   );
 
   showSteps = steps => (

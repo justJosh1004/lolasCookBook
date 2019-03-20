@@ -28,7 +28,7 @@ class Recipes extends Component {
     } else {
       if (recipes.length > 0) {
         return (
-          <div style={{ marginTop: '10px' }}>
+          <div style={{ marginTop: '10px', textAlign: 'left' }}>
             <Card.Group>
               {
                 (recipeItems = recipes.map(recipe => (
