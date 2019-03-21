@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, List, Grid, Segment } from 'semantic-ui-react';
+import { Card, List, Grid } from 'semantic-ui-react';
 
 class RecipeItem extends Component {
   showingredientDetail = ing => {
@@ -12,29 +12,28 @@ class RecipeItem extends Component {
     }
   };
 
-  showIngredients = ingredients => (
-    <List animated relaxed>
-      <List.Item>
-        {ingredients.map(ing => (
+  showIngredients = ingredients =>
+    ingredients.map(ing => (
+      <List animated divided>
+        <List.Item>
           <List.Content key={ing.ing}>
             <List.Header>{ing.ing}</List.Header>
             <List.Description>
               {this.showingredientDetail(ing)}
             </List.Description>
           </List.Content>
-        ))}
-      </List.Item>
-    </List>
-  );
+        </List.Item>
+      </List>
+    ));
 
   showSteps = steps =>
     steps.map(step => {
       return (
         <Grid key={step.step} columns="equal" verticalAlign="middle">
-          <Grid.Column>
+          <Grid.Column width={1}>
             <h1>{step.step}</h1>
           </Grid.Column>
-          <Grid.Column width={14}>
+          <Grid.Column width={15}>
             <div>{step.text}</div>
           </Grid.Column>
         </Grid>
@@ -44,15 +43,21 @@ class RecipeItem extends Component {
   render() {
     const { recipe } = this.props;
     return (
-      <Card>
+      <Card fluid color="orange">
         <Card.Content>
           <Card.Header content={recipe.name} />
-          <h4>Ingredients:</h4>
-          <Card.Description
-            content={this.showIngredients(recipe.ingredients)}
-          />
-          <h4>Steps:</h4>
-          <Card.Description content={this.showSteps(recipe.steps)} />
+          <Grid>
+            <Grid.Column width={5}>
+              <h4>Ingredients:</h4>
+              <Card.Description
+                content={this.showIngredients(recipe.ingredients)}
+              />
+            </Grid.Column>
+            <Grid.Column width={11}>
+              <h4>Steps:</h4>
+              <Card.Description content={this.showSteps(recipe.steps)} />
+            </Grid.Column>
+          </Grid>
         </Card.Content>
       </Card>
     );
