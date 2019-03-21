@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, List } from 'semantic-ui-react';
+import { Card, List, Grid, Segment } from 'semantic-ui-react';
 
 class RecipeItem extends Component {
   showingredientDetail = ing => {
@@ -27,13 +27,19 @@ class RecipeItem extends Component {
     </List>
   );
 
-  showSteps = steps => (
-    <div>
-      {steps.map(step => (
-        <p key={step.step}>{step.text}</p>
-      ))}
-    </div>
-  );
+  showSteps = steps =>
+    steps.map(step => {
+      return (
+        <Grid key={step.step} columns="equal" verticalAlign="middle">
+          <Grid.Column>
+            <h1>{step.step}</h1>
+          </Grid.Column>
+          <Grid.Column width={14}>
+            <div>{step.text}</div>
+          </Grid.Column>
+        </Grid>
+      );
+    });
 
   render() {
     const { recipe } = this.props;
