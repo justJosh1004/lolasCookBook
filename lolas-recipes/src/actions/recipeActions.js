@@ -8,7 +8,6 @@ export const getAllRecipes = () => dispatch => {
   axios
     .get('/api/recipes')
     .then(res => {
-      console.log(res);
       dispatch({
         type: GET_RECIPES,
         payload: res.data

@@ -20,7 +20,6 @@ class Recipes extends Component {
 
   render() {
     const { recipes, loading } = this.props.recipe;
-    console.log(recipes);
     let recipeItems;
 
     if (recipes === null || loading) {
