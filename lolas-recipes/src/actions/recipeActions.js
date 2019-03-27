@@ -24,7 +24,6 @@ export const getAllRecipes = () => dispatch => {
 
 // Get one recipe
 export const getRecipe = id => dispatch => {
-  console.log(`In getRecipe action. The id is: ${id}`);
   dispatch(setLoading());
   axios
     .get(`/api/recipes/${id}`)

@@ -8,7 +8,6 @@ import Ingredients from './Ingredients';
 class RecipeItem extends Component {
   render() {
     const { recipe } = this.props;
-    console.log(recipe);
     return (
       <Card style={{ cursor: 'default' }}>
         <Card.Content>

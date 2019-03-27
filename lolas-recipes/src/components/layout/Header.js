@@ -5,10 +5,9 @@ export default function Header() {
     <div
       style={{
         fontFamily: '"Sacramento", cursive',
-        fontSize: '50px',
+        fontSize: '5em',
         lineHeight: '1em'
-      }}
-    >
+      }}>
       Lola Elena's Cook Book
     </div>
   );

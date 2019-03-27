@@ -37,30 +37,15 @@ router.get('/', (req, res) => {
 // @access  Public
 router.get('/:id', (req, res) => {
   const errors = {};
-  console.log('Requesting one recipe');
-  console.log(req.params.id);
 
   Recipe.findOne({ _id: req.params.id }, (err, recipe) => {
     if (err) {
       errors.noRecipe = 'There is no recipe';
       res.status(404).json(errors);
     } else {
-      console.log(recipe);
       res.json(recipe);
     }
   });
-  // .then(recipe => {
-  //   if (!recipe) {
-  //     errors.noRecipe = 'There is no recipe';
-  //     res.status(404).json(errors);
-  //   }
-
-  //   res.json(recipe);
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  //   res.status(404).json({ recipe: 'There is no recipe' });
-  // });
 });
 
 // @route   POST api/recipe

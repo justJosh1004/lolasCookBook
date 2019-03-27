@@ -17,7 +17,11 @@ export default class Nav extends Component {
 
     return (
       <div>
-        <Menu attached="top" tabular borderless>
+        <Menu
+          attached="top"
+          tabular
+          borderless
+          style={{ marginBottom: '20px' }}>
           <Menu.Item
             as={Link}
             to="/"
