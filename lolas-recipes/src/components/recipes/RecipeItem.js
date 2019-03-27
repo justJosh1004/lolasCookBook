@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 
 import Ingredients from './Ingredients';
 // import Steps from './Steps';
@@ -8,7 +8,7 @@ class RecipeItem extends Component {
   render() {
     const { recipe } = this.props;
     return (
-      <Card color="orange" style={{ cursor: 'default' }}>
+      <Card style={{ cursor: 'default' }}>
         <Card.Content>
           <Card.Header>
             <div
@@ -29,6 +29,9 @@ class RecipeItem extends Component {
               <Steps steps={recipe.steps} />
             </Grid.Column> */}
         </Card.Content>
+        <Button fluid color="orange">
+          View Recipe
+        </Button>
       </Card>
     );
   }
