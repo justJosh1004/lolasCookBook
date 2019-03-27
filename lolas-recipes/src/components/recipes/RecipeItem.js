@@ -10,7 +10,17 @@ class RecipeItem extends Component {
     return (
       <Card color="orange" style={{ cursor: 'default' }}>
         <Card.Content>
-          <Card.Header content={recipe.name} />
+          <Card.Header>
+            <div
+              style={{
+                fontFamily: '"Sacramento", cursive',
+                fontSize: '36px',
+                fontWeight: '300',
+                lineHeight: '1.5em'
+              }}>
+              {recipe.name}
+            </div>
+          </Card.Header>
           <Ingredients ingredients={recipe.ingredients} />
           {/* <Grid.Column width={11}>
               <Steps steps={recipe.steps} />
