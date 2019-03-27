@@ -32,6 +32,36 @@ router.get('/', (req, res) => {
   });
 });
 
+// @route   GET api/recipes/:id
+// @desc    Get one recipes
+// @access  Public
+router.get('/:id', (req, res) => {
+  const errors = {};
+  console.log('Requesting one recipe');
+  console.log(req.params.id);
+
+  Recipe.findOne({ recipe: req.params.id }, (err, recipe) => {
+    if (err) {
+      errors.noRecipe = 'There is no recipe';
+      res.status(404).json(errors);
+    }
+
+    res.json(recipe);
+  });
+  // .then(recipe => {
+  //   if (!recipe) {
+  //     errors.noRecipe = 'There is no recipe';
+  //     res.status(404).json(errors);
+  //   }
+
+  //   res.json(recipe);
+  // })
+  // .catch(err => {
+  //   console.log(err);
+  //   res.status(404).json({ recipe: 'There is no recipe' });
+  // });
+});
+
 // @route   POST api/recipe
 // @desc    Create a recipe
 // @access  Private
