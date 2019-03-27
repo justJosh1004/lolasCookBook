@@ -14,13 +14,16 @@ class RecipeItem extends Component {
             <div
               style={{
                 fontFamily: '"Sacramento", cursive',
-                fontSize: '36px',
+                fontSize: '40px',
                 fontWeight: '300',
-                lineHeight: '1.5em'
+                lineHeight: '1em',
+                textAlign: 'center'
               }}>
               {recipe.name}
             </div>
           </Card.Header>
+        </Card.Content>
+        <Card.Content>
           <Ingredients ingredients={recipe.ingredients} />
           {/* <Grid.Column width={11}>
               <Steps steps={recipe.steps} />
