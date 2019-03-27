@@ -5,6 +5,7 @@ import { Dimmer, Loader, Grid } from 'semantic-ui-react';
 
 import { getAllRecipes } from '../../actions/recipeActions';
 import RecipeItem from './RecipeItem';
+import ComingSoon from './RecipeComingSoon';
 
 class Recipes extends Component {
   componentDidMount = () => {
@@ -43,6 +44,17 @@ class Recipes extends Component {
               }
             </Grid>
             <h3>More recipes coming soon</h3>
+            <Grid container doubling centered columns={3}>
+              <Grid.Column>
+                <ComingSoon />
+              </Grid.Column>
+              <Grid.Column>
+                <ComingSoon />
+              </Grid.Column>
+              <Grid.Column>
+                <ComingSoon />
+              </Grid.Column>
+            </Grid>
           </div>
         );
       }
