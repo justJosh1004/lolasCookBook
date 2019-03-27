@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Dimmer, Loader, Container, Header, Grid } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import {
+  Dimmer,
+  Loader,
+  Container,
+  Header,
+  Grid,
+  Icon
+} from 'semantic-ui-react';
 
 import { getRecipe } from '../../actions/recipeActions';
 import Ingredients from './Ingredients';
@@ -33,6 +41,13 @@ export class Recipe extends Component {
       if (recipe) {
         return (
           <Container>
+            <Link to="/recipes" style={{ float: 'left' }}>
+              <Icon
+                name="long arrow alternate left"
+                color="black"
+                size="huge"
+              />
+            </Link>
             <Header
               style={{
                 fontFamily: '"Sacramento", cursive',
