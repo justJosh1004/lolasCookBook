@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Card, Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer, Loader, Grid } from 'semantic-ui-react';
 
 import { getAllRecipes } from '../../actions/recipeActions';
 import RecipeItem from './RecipeItem';
@@ -27,20 +27,32 @@ class Recipes extends Component {
     } else {
       if (recipes.length > 0) {
         return (
-          <div style={{ marginTop: '10px', textAlign: 'left' }}>
-            <Card.Group>
+          <div>
+            <Grid
+              container
+              doubling
+              centered
+              columns={3}
+              style={{ marginTop: '10px', textAlign: 'left' }}>
               {
                 (recipeItems = recipes.map(recipe => (
-                  <RecipeItem key={recipe._id} recipe={recipe} />
+                  <Grid.Column key={recipe._id}>
+                    <RecipeItem recipe={recipe} />
+                  </Grid.Column>
                 )))
               }
-            </Card.Group>
+            </Grid>
+            <h3>More recipes coming soon</h3>
           </div>
         );
       }
     }
 
-    return <div>{recipeItems}</div>;
+    return (
+      <div>
+        <div>{recipeItems}</div>
+      </div>
+    );
   }
 }
 

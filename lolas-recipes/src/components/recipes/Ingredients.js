@@ -14,7 +14,7 @@ class Ingredients extends Component {
 
   showIngredients = ingredients =>
     ingredients.map(ing => (
-      <List key={ing.ing} animated divided>
+      <List key={ing.ing} animated relaxed divided>
         <List.Item>
           <List.Content key={ing.ing}>
             <List.Header>{ing.ing}</List.Header>
