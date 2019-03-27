@@ -1,14 +1,6 @@
 import React from 'react';
+import './layoutStyles.css';
 
 export default function Header() {
-  return (
-    <div
-      style={{
-        fontFamily: '"Sacramento", cursive',
-        fontSize: '5em',
-        lineHeight: '1em'
-      }}>
-      Lola Elena's Cook Book
-    </div>
-  );
+  return <div className="title">Lola Elena's Cook Book</div>;
 }

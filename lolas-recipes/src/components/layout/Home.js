@@ -5,13 +5,7 @@ export default function Home() {
   let yearsAgo = currentYear - 2003;
 
   return (
-    <div
-      style={{
-        fontFamily: '"Pompiere", cursive',
-        fontSize: '26px',
-        lineHeight: '1em',
-        padding: '20px'
-      }}>
+    <div className="intro">
       <p>
         This is based of a collection of handwritten recipes from my
         Grandmother. She gave this to us {yearsAgo} years ago as we left the
@@ -25,6 +19,7 @@ export default function Home() {
         worn and damged, I've decided to put the recipes online for easier
         access between me and my sisters and to preserve its contents.
       </p>
+      <p>More recipes and features (e.g. Search, sort, etc.) will come.</p>
     </div>
   );
 }
