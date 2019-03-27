@@ -11,6 +11,7 @@ import Nav from './components/layout/Nav';
 import Header from './components/layout/Header';
 import Home from './components/layout/Home';
 import Recipes from './components/recipes/Recipes';
+import Recipe from './components/recipes/Recipe';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
               <Nav />
               <Route exact path="/" component={Home} />
               <Route exact path="/recipes" component={Recipes} />
+              <Route exact path="/recipes/:id" component={Recipe} />
             </Container>
           </Router>
         </Provider>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Button } from 'semantic-ui-react';
 
 import Ingredients from './Ingredients';
@@ -7,6 +8,7 @@ import Ingredients from './Ingredients';
 class RecipeItem extends Component {
   render() {
     const { recipe } = this.props;
+    console.log(recipe);
     return (
       <Card style={{ cursor: 'default' }}>
         <Card.Content>
@@ -29,9 +31,11 @@ class RecipeItem extends Component {
               <Steps steps={recipe.steps} />
             </Grid.Column> */}
         </Card.Content>
-        <Button fluid color="orange">
-          View Recipe
-        </Button>
+        <Link to={`/recipes/${recipe._id}`}>
+          <Button fluid color="orange" attached="bottom">
+            View Recipe
+          </Button>
+        </Link>
       </Card>
     );
   }

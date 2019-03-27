@@ -1,4 +1,4 @@
-import { GET_RECIPES, LOADING_RECIPES } from '../actions/types';
+import { GET_RECIPES, LOADING_RECIPES, GET_RECIPE } from '../actions/types';
 
 const initialState = {
   recipes: null,
@@ -16,6 +16,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         recipes: action.payload,
+        loading: false
+      };
+    case GET_RECIPE:
+      return {
+        ...state,
+        recipe: action.payload,
         loading: false
       };
     default:
