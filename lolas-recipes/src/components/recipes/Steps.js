@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import { Container, List } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 
 class Steps extends Component {
   showSteps = steps =>
     steps.map(step => {
       return (
-        <List key={step.step} divided animated>
-          <List.Item>
-            <List.Icon style={{ fontFamily: 'Pompiere', fontSize: '30px' }}>
+        <Grid key={step.step} columns="equal" verticalAlign="middle">
+          <Grid.Column>
+            <div style={{ fontFamily: 'Pompiere', fontSize: '30px' }}>
               {step.step}
-            </List.Icon>
-            <List.Content>
-              <List.Description style={{ fontSize: '25px' }}>
-                {step.text}
-              </List.Description>
-            </List.Content>
-          </List.Item>
-        </List>
+            </div>
+          </Grid.Column>
+          <Grid.Column width={15}>
+            <div style={{ fontSize: '25px', lineHeight: '2rem' }}>
+              {step.text}
+            </div>
+          </Grid.Column>
+        </Grid>
       );
     });
 
