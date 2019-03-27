@@ -12,7 +12,7 @@ export class Recipe extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.props.recipe);
     return (
       <div>
         <h2>This is a single recipe</h2>

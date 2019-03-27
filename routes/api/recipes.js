@@ -40,13 +40,14 @@ router.get('/:id', (req, res) => {
   console.log('Requesting one recipe');
   console.log(req.params.id);
 
-  Recipe.findOne({ recipe: req.params.id }, (err, recipe) => {
+  Recipe.findOne({ _id: req.params.id }, (err, recipe) => {
     if (err) {
       errors.noRecipe = 'There is no recipe';
       res.status(404).json(errors);
+    } else {
+      console.log(recipe);
+      res.json(recipe);
     }
-
-    res.json(recipe);
   });
   // .then(recipe => {
   //   if (!recipe) {
