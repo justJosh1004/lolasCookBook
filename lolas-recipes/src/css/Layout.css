@@ -1,8 +1,9 @@
 .title {
   font-family: 'Sacramento', cursive;
-  font-size: 5rem;
-  line-height: 1rem;
+  font-size: 4rem;
+  line-height: 4rem;
   padding: 20px;
+  margin-top: 20px;
 }
 
 .intro {

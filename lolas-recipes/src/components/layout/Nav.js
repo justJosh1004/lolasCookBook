@@ -18,7 +18,7 @@ export default class Nav extends Component {
     return (
       <div>
         <Menu
-          attached="top"
+          // attached="top"
           tabular
           borderless
           style={{ marginBottom: '20px' }}>

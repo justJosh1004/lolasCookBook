@@ -16,7 +16,7 @@ import Recipe from './components/recipes/Recipe';
 class App extends Component {
   render() {
     return (
-      <div className="App" style={{ marginTop: '20px' }}>
+      <div className="App">
         <Provider store={store}>
           <Router>
             <Container>
