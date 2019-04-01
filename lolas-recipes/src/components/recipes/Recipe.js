@@ -8,7 +8,7 @@ import {
   Container,
   Header,
   Grid,
-  Icon
+  Button
 } from 'semantic-ui-react';
 
 import { getRecipe } from '../../actions/recipeActions';
@@ -43,14 +43,14 @@ export class Recipe extends Component {
       if (recipe) {
         return (
           <Container>
-            {/* <Link to="/recipes" style={{ float: 'left' }}>
-              <Icon
-                name="long arrow alternate left"
-                color="black"
-                size="huge"
-              />
-            </Link> */}
-            <Header className="recipe-card card-header">{recipe.name}</Header>
+            <Link to="/recipes">
+              <Button fluid color="orange">
+                Back to Recipes
+              </Button>
+            </Link>
+            <Header className="recipe-card card-header">
+              <p>{recipe.name}</p>
+            </Header>
             <Grid stackable divided>
               <Grid.Row stretched>
                 <Grid.Column width={4}>
