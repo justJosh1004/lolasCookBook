@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 import '../../css/Recipes.css';
 
@@ -9,10 +9,10 @@ class Steps extends Component {
       return (
         <Grid key={step.step} columns="equal" verticalAlign="middle">
           <Grid.Column>
-            <div className="step-number">{step.step}</div>
+            <p className="step-number">{step.step}</p>
           </Grid.Column>
           <Grid.Column width={15}>
-            <div className="step-description">{step.text}</div>
+            <p className="step-description">{step.text}</p>
           </Grid.Column>
         </Grid>
       );
@@ -21,12 +21,10 @@ class Steps extends Component {
   render() {
     const { steps } = this.props;
     return (
-      <Container className="recipe-card">
-        <div className="card-detail-header">Steps:</div>
-        <Container style={{ textAlign: 'left' }}>
-          {this.showSteps(steps)}
-        </Container>
-      </Container>
+      <div className="recipe-card">
+        <div className="recipe-card card-detail-header">Steps:</div>
+        <div style={{ textAlign: 'left' }}>{this.showSteps(steps)}</div>
+      </div>
     );
   }
 }

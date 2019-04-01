@@ -43,26 +43,24 @@ export class Recipe extends Component {
       if (recipe) {
         return (
           <Container>
-            <Link to="/recipes" style={{ float: 'left' }}>
+            {/* <Link to="/recipes" style={{ float: 'left' }}>
               <Icon
                 name="long arrow alternate left"
                 color="black"
                 size="huge"
               />
-            </Link>
+            </Link> */}
             <Header className="recipe-card card-header">{recipe.name}</Header>
-            <Container>
-              <Grid columns="equal" stackable divided>
-                <Grid.Row stretched>
-                  <Grid.Column width={4}>
-                    <Ingredients ingredients={recipe.ingredients} />
-                  </Grid.Column>
-                  <Grid.Column width={12}>
-                    <Steps steps={recipe.steps} />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </Container>
+            <Grid stackable divided>
+              <Grid.Row stretched>
+                <Grid.Column width={4}>
+                  <Ingredients ingredients={recipe.ingredients} />
+                </Grid.Column>
+                <Grid.Column width={12}>
+                  <Steps steps={recipe.steps} />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Container>
         );
       }
