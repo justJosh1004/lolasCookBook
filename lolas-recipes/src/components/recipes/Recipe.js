@@ -15,6 +15,8 @@ import { getRecipe } from '../../actions/recipeActions';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
 
+import '../../css/Recipes.css';
+
 export class Recipe extends Component {
   componentDidMount = () => {
     if (this.props.match.params.id) {
@@ -48,16 +50,7 @@ export class Recipe extends Component {
                 size="huge"
               />
             </Link>
-            <Header
-              style={{
-                fontFamily: '"Sacramento", cursive',
-                fontSize: '50px',
-                fontWeight: '300',
-                lineHeight: '1em',
-                textAlign: 'center'
-              }}>
-              {recipe.name}
-            </Header>
+            <Header className="recipe-card card-header">{recipe.name}</Header>
             <Container>
               <Grid columns="equal" stackable divided>
                 <Grid.Row stretched>

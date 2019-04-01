@@ -3,12 +3,12 @@
 }
 
 .card-header {
-  font-family: 'Sacramento', cursive;
-  font-size: 4rem;
-  font-weight: 300;
-  line-height: 1rem;
-  text-align: center;
-  padding: 1.5rem;
+  font-family: 'Sacramento', cursive !important;
+  font-size: 4rem !important;
+  font-weight: 300 !important;
+  line-height: 1rem !important;
+  text-align: center !important;
+  padding: 1.5rem !important;
 }
 
 .card-detail-header {
