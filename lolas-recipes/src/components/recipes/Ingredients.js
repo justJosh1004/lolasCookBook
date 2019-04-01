@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { List, Card } from 'semantic-ui-react';
 
+import '../../css/Recipes.css';
+
 class Ingredients extends Component {
   showingredientDetail = ing => {
     if (ing.quantity && ing.measurement) {
@@ -17,10 +19,10 @@ class Ingredients extends Component {
       <List key={ing.ing} animated relaxed divided>
         <List.Item>
           <List.Content key={ing.ing}>
-            <List.Header style={{ fontFamily: 'Pompiere', fontSize: '25px' }}>
+            <List.Header className="ingredient-list-header">
               {ing.ing}
             </List.Header>
-            <List.Description style={{ fontSize: '25px' }}>
+            <List.Description className="ingredient-list">
               {this.showingredientDetail(ing)}
             </List.Description>
           </List.Content>
@@ -31,10 +33,8 @@ class Ingredients extends Component {
   render() {
     const { ingredients } = this.props;
     return (
-      <div style={{ cursor: 'default' }}>
-        <div style={{ fontSize: '30px', marginBottom: '1em' }}>
-          Ingredients:
-        </div>
+      <div>
+        <div className="ingredient-header">Ingredients:</div>
         <Card.Description content={this.showIngredients(ingredients)} />
       </div>
     );
