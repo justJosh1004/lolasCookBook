@@ -34,7 +34,7 @@ class Ingredients extends Component {
     const { ingredients } = this.props;
     return (
       <div>
-        <div className="ingredient-header">Ingredients:</div>
+        <div className="card-detail-header">Ingredients:</div>
         <Card.Description content={this.showIngredients(ingredients)} />
       </div>
     );
