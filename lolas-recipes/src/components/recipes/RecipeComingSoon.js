@@ -1,9 +1,11 @@
 import React from 'react';
 import { Card, Placeholder, Button } from 'semantic-ui-react';
 
+import '../../css/Recipes.css';
+
 const RecipeComingSoon = () => {
   return (
-    <Card style={{ cursor: 'default' }}>
+    <Card centered className="recipe-card">
       <Card.Content>
         <Card.Header>
           <Placeholder>

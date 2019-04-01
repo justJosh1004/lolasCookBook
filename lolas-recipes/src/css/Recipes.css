@@ -1,0 +1,12 @@
+.recipe-card {
+  cursor: default;
+}
+
+.card-header {
+  font-family: 'Sacramento', cursive;
+  font-size: 4rem;
+  font-weight: 300;
+  line-height: 1rem;
+  text-align: center;
+  padding: 1.5rem;
+}

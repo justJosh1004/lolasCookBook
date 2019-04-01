@@ -6,6 +6,7 @@ import { Dimmer, Loader, Grid } from 'semantic-ui-react';
 import { getAllRecipes } from '../../actions/recipeActions';
 import RecipeItem from './RecipeItem';
 import ComingSoon from './RecipeComingSoon';
+import '../../css/Recipes.css';
 
 class Recipes extends Component {
   componentDidMount = () => {
@@ -29,12 +30,7 @@ class Recipes extends Component {
       if (recipes.length > 0) {
         return (
           <div>
-            <Grid
-              container
-              doubling
-              centered
-              columns={3}
-              style={{ marginTop: '10px', textAlign: 'left' }}>
+            <Grid container stackable centered columns="equal">
               {
                 (recipeItems = recipes.map(recipe => (
                   <Grid.Column key={recipe._id}>
@@ -44,7 +40,7 @@ class Recipes extends Component {
               }
             </Grid>
             <h3>More recipes coming soon</h3>
-            <Grid container doubling centered columns={3}>
+            <Grid container doubling centered columns={4}>
               <Grid.Column>
                 <ComingSoon />
               </Grid.Column>
