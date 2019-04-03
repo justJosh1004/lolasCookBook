@@ -10,8 +10,10 @@ import { newTab } from '../../actions/navActions';
 
 class Nav extends Component {
   componentDidMount = () => {
-    if (window.location.pathname !== '/') {
+    if (window.location.pathname === '/recipes') {
       this.props.newTab('recipes');
+    } else if (window.location.pathname === '/admin') {
+      this.props.newTab('admin');
     }
   };
 

@@ -12,6 +12,7 @@ import Header from './components/layout/Header';
 import Home from './components/layout/Home';
 import Recipes from './components/recipes/Recipes';
 import Recipe from './components/recipes/Recipe';
+import GoogleAuth from './components/auth/GoogleAuth';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/recipes" component={Recipes} />
               <Route exact path="/recipes/:id" component={Recipe} />
+              <Route exact path="/admin" component={GoogleAuth} />
             </Container>
           </Router>
         </Provider>
