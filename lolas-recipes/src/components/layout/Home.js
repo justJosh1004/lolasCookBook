@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="intro">
       <p>
-        This is based of a collection of handwritten recipes from my
+        This is based off a collection of handwritten recipes from my
         Grandmother. She gave this to us {yearsAgo} years ago as we left the
         Philippines to move to the United States.
       </p>
