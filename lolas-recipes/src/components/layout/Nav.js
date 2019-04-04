@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { Menu } from 'semantic-ui-react';
 
-import GoogleAuth from '../auth/GoogleAuth';
 import { newTab } from '../../actions/navActions';
 
 class Nav extends Component {
@@ -45,15 +44,6 @@ class Nav extends Component {
             active={activeItem === 'recipes'}
             onClick={this.handleItemClick}
           />
-          <Menu.Item
-            // as={Link} // This is component Augmentation
-            // to="/recipes"
-            // name="recipes"
-            // active={activeItem === 'recipes'}
-            // onClick={this.handleItemClick}
-            position="right">
-            <GoogleAuth />
-          </Menu.Item>
         </Menu>
       </div>
     );

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
 
-class GoogleAuth extends Component {
-  state = {
-    isSignedIn: null
-  };
+import { signIn, signOut, authChange } from '../../actions/authActions';
 
+class GoogleAuth extends Component {
   componentDidMount = () => {
     window.gapi.load('client:auth2', () => {
       window.gapi.client
@@ -16,36 +15,32 @@ class GoogleAuth extends Component {
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
-          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
-          this.auth.isSignedIn.listen(this.onAuthChange);
+          this.props.authChange();
+          this.auth.isSignedIn.listen(this.props.authChange);
         });
     });
   };
 
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
-  };
-
   onSignInClick = () => {
-    this.auth.signIn();
+    this.props.signIn();
   };
 
   onSignOutClick = () => {
-    this.auth.signOut();
+    this.props.signOut();
   };
 
   renderAuthButton = () => {
-    if (this.state.isSignedIn === null) {
+    if (this.props.isSignedIn === null) {
       return null;
-    } else if (this.state.isSignedIn) {
+    } else if (this.props.isSignedIn) {
       return (
-        <Button onClick={this.onSignOutClick} color="google plus">
+        <Button fluid onClick={this.onSignOutClick} color="google plus">
           <Icon name="google" /> Sign Out
         </Button>
       );
     } else {
       return (
-        <Button onClick={this.onSignInClick} color="google plus">
+        <Button fluid onClick={this.onSignInClick} color="google plus">
           <Icon name="google" /> Sign In
         </Button>
       );
@@ -57,4 +52,11 @@ class GoogleAuth extends Component {
   }
 }
 
-export default GoogleAuth;
+const mapStateToProps = state => ({
+  isSignedIn: state.auth.isSignedIn
+});
+
+export default connect(
+  mapStateToProps,
+  { signIn, signOut, authChange }
+)(GoogleAuth);
