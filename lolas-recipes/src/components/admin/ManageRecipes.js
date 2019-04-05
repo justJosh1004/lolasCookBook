@@ -31,7 +31,7 @@ class ManageRecipes extends Component {
           <div className="manage-recipes">
             <div className="manage-recipes-title">Manage the recipes:</div>
             <Link to="/admin/add-recipe">
-              <Button fluid inverted attached="top" color="green">
+              <Button fluid attached="top" color="green">
                 Add Recipe
               </Button>
             </Link>

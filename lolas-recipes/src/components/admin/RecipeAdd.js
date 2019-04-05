@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Button } from 'semantic-ui-react';
 
 class RecipeAdd extends Component {
   static propTypes = {
@@ -8,7 +10,15 @@ class RecipeAdd extends Component {
   };
 
   render() {
-    return <div>Add a Recipe</div>;
+    return (
+      <div>
+        <Link to="/admin">
+          <Button fluid color="yellow">
+            Go Back
+          </Button>
+        </Link>
+      </div>
+    );
   }
 }
 
