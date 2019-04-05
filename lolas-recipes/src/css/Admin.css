@@ -1,3 +1,13 @@
 .admin {
   font-size: 2rem;
 }
+
+.manage-recipes {
+  text-align: left;
+}
+
+.manage-recipes-title {
+  font-size: 3rem;
+  text-align: center;
+  padding-bottom: 2rem;
+}

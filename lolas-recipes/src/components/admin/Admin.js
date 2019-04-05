@@ -4,11 +4,16 @@ import { connect } from 'react-redux';
 import '../../css/Admin.css';
 
 import GoogleAuth from '../auth/GoogleAuth';
+import ManageRecipes from './ManageRecipes';
 
 class Admin extends Component {
   render() {
     if (this.props.isSignedIn) {
-      return <div className="admin">Recipes will go here</div>;
+      return (
+        <div className="admin">
+          <ManageRecipes />
+        </div>
+      );
     } else {
       return (
         <div className="admin">
