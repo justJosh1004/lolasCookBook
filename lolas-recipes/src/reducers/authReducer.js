@@ -2,7 +2,8 @@ import { SIGN_IN, SIGN_OUT, AUTH_CHANGE } from '../actions/types';
 
 const initialState = {
   isSignedIn: null,
-  userId: null
+  userId: null,
+  modalOpen: null
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isSignedIn: action.payload.isSignedIn,
-        userId: action.payload.userId
+        userId: action.payload.userId,
+        modalOpen: action.payload.modalOpen
       };
     case SIGN_IN:
       auth().signIn();

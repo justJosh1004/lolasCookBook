@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
 import { newTab } from '../../actions/navActions';
+import GoogleAuth from '../auth/GoogleAuth';
 
 class Nav extends Component {
   componentDidMount = () => {
@@ -22,6 +23,14 @@ class Nav extends Component {
 
   render() {
     const { activeItem } = this.props.activeItem;
+
+    let renderLogout = this.props.isSignedIn ? (
+      <Menu.Menu position="right">
+        <Menu.Item>
+          <GoogleAuth />
+        </Menu.Item>
+      </Menu.Menu>
+    ) : null;
 
     return (
       <div>
@@ -44,6 +53,7 @@ class Nav extends Component {
             active={activeItem === 'recipes'}
             onClick={this.handleItemClick}
           />
+          {renderLogout}
         </Menu>
       </div>
     );
@@ -55,7 +65,8 @@ Nav.propType = {
 };
 
 const mapStateToProps = state => ({
-  activeItem: state.activeItem
+  activeItem: state.activeItem,
+  isSignedIn: state.auth.isSignedIn
 });
 
 export default connect(

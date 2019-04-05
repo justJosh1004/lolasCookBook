@@ -22,13 +22,18 @@ export const authChange = () => {
         isSignedIn: auth().isSignedIn.get(),
         userId: auth()
           .currentUser.get()
-          .getId()
+          .getId(),
+        modalOpen: false
       }
     };
   } else {
     return {
       type: AUTH_CHANGE,
-      payload: { isSignedIn: auth().isSignedIn.get() }
+      payload: {
+        isSignedIn: auth().isSignedIn.get(),
+        userId: null,
+        modalOpen: true
+      }
     };
   }
 };
