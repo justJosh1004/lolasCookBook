@@ -29,7 +29,7 @@ class ManageRecipes extends Component {
       if (recipes.length > 0) {
         return (
           <div className="manage-recipes">
-            <div className="manage-recipes-title">Manage the recipes:</div>
+            <div className="admin-title">Manage the recipes:</div>
             <Link to="/admin/add-recipe">
               <Button fluid attached="top" color="green">
                 Add Recipe

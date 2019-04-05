@@ -17,7 +17,7 @@ class Admin extends Component {
     } else {
       return (
         <div className="admin">
-          <p>Sign in with Google to manage recipes</p>
+          <p className="admin-title">Sign in with Google to manage recipes</p>
           <GoogleAuth />
         </div>
       );

@@ -12,8 +12,9 @@ class RecipeAdd extends Component {
   render() {
     return (
       <div>
+        <div className="admin-title">Add a Recipe</div>
         <Link to="/admin">
-          <Button fluid color="yellow">
+          <Button fluid attached="top" color="yellow">
             Go Back
           </Button>
         </Link>
