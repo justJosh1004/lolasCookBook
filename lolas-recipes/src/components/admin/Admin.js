@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Container,
-  List,
-  Button,
-  Dimmer,
-  Loader,
-  Modal
-} from 'semantic-ui-react';
 
 import '../../css/Admin.css';
 
-import { getAllRecipes } from '../../actions/recipeActions';
 import GoogleAuth from '../auth/GoogleAuth';
 
 class Admin extends Component {
@@ -30,11 +21,7 @@ class Admin extends Component {
 }
 
 const mapStateToProps = state => ({
-  isSignedIn: state.auth.isSignedIn,
-  recipe: state.recipe
+  isSignedIn: state.auth.isSignedIn
 });
 
-export default connect(
-  mapStateToProps,
-  { getAllRecipes }
-)(Admin);
+export default connect(mapStateToProps)(Admin);
