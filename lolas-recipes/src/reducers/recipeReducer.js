@@ -1,4 +1,9 @@
-import { GET_RECIPES, LOADING_RECIPES, GET_RECIPE } from '../actions/types';
+import {
+  GET_RECIPES,
+  LOADING_RECIPES,
+  GET_RECIPE,
+  CREATE_RECIPE
+} from '../actions/types';
 
 const initialState = {
   recipes: null,
@@ -24,6 +29,10 @@ export default (state = initialState, action) => {
         recipe: action.payload,
         loading: false
       };
+    case CREATE_RECIPE:
+      console.log(`Creating a New Recipe with: `);
+      console.log(action.payload);
+      return state;
     default:
       return state;
   }

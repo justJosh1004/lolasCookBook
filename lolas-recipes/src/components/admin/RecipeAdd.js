@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 
+import { createRecipe } from '../../actions/recipeActions';
+import RecipeForm from './RecipeForm';
+
 class RecipeAdd extends Component {
-  static propTypes = {
-    prop: PropTypes
+  onSubmit = formValues => {
+    console.log(formValues);
+    this.props.createRecipe(formValues);
   };
 
   render() {
@@ -18,6 +21,8 @@ class RecipeAdd extends Component {
             Go Back
           </Button>
         </Link>
+        <div className="admin-subtitle">Create Recipe:</div>
+        <RecipeForm onSubmit={this.onSubmit} />
       </div>
     );
   }
@@ -25,9 +30,7 @@ class RecipeAdd extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { createRecipe }
 )(RecipeAdd);

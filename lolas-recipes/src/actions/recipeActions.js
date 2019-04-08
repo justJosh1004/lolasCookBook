@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { GET_RECIPES, LOADING_RECIPES, GET_RECIPE } from './types';
+import {
+  GET_RECIPES,
+  LOADING_RECIPES,
+  GET_RECIPE,
+  CREATE_RECIPE
+} from './types';
 
 // Get all recipes
 export const getAllRecipes = () => dispatch => {
@@ -40,6 +45,14 @@ export const getRecipe = id => dispatch => {
         payload: null
       });
     });
+};
+
+// Create recipe
+export const createRecipe = formValues => dispatch => {
+  dispatch({
+    type: CREATE_RECIPE,
+    payload: formValues
+  });
 };
 
 // Set Loading

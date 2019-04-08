@@ -11,3 +11,13 @@
   text-align: center;
   padding-bottom: 2rem;
 }
+
+.admin-subtitle {
+  font-size: 2rem;
+  text-align: left;
+  padding: 2rem;
+}
+
+.recipe-form {
+  text-align: left;
+}
