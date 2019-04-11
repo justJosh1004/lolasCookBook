@@ -90,5 +90,16 @@ router.post('/', (req, res) => {
 // @route   DELETE api/recipe
 // @desc    Delete a recipe
 // @access  Private
+router.delete('/:id', (req, res) => {
+  Recipe.findByIdAndDelete(req.params.id, (err, recipe) => {
+    if (err) {
+      console.log(err);
+      errors.noRecipeToDelete = 'There is no recipe to delete';
+      res.status(404).json(errors);
+    } else {
+      res.json(recipe);
+    }
+  });
+});
 
 module.exports = router;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Dimmer, Loader, List, Divider, Button } from 'semantic-ui-react';
 
-import { getAllRecipes } from '../../actions/recipeActions';
+import { getAllRecipes, deleteRecipe } from '../../actions/recipeActions';
 import '../../css/Recipes.css';
 
 class ManageRecipes extends Component {
@@ -17,6 +17,10 @@ class ManageRecipes extends Component {
         <Loader size="massive">Loading Recipes...</Loader>
       </Dimmer>
     );
+  };
+
+  onDeleteClick = id => {
+    this.props.deleteRecipe(id);
   };
 
   render() {
@@ -44,7 +48,10 @@ class ManageRecipes extends Component {
                       <Button inverted color="orange">
                         Edit
                       </Button>
-                      <Button inverted color="red">
+                      <Button
+                        onClick={() => this.onDeleteClick(recipe._id)}
+                        inverted
+                        color="red">
                         Delete
                       </Button>
                     </List.Content>
@@ -63,7 +70,8 @@ class ManageRecipes extends Component {
 }
 
 ManageRecipes.propTypes = {
-  getAllRecipes: PropTypes.func.isRequired
+  getAllRecipes: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -72,5 +80,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getAllRecipes }
+  { getAllRecipes, deleteRecipe }
 )(ManageRecipes);

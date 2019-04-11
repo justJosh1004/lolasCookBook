@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { GET_RECIPES, LOADING_RECIPES, GET_RECIPE } from './types';
+import {
+  GET_RECIPES,
+  LOADING_RECIPES,
+  GET_RECIPE,
+  DELETE_RECIPE
+} from './types';
 
 // Get all recipes
 export const getAllRecipes = () => dispatch => {
@@ -45,6 +50,20 @@ export const getRecipe = id => dispatch => {
 // Create recipe
 export const createRecipe = (formValues, history) => dispatch => {
   axios.post('/api/recipes', formValues).then(res => history.push('/admin'));
+};
+
+// Delete recipe
+export const deleteRecipe = id => dispatch => {
+  console.log(`Clicked Delete! The ID to delete is: ${id}`);
+  axios
+    .delete(`/api/recipes/${id}`)
+    .then(res => {
+      dispatch({
+        type: DELETE_RECIPE,
+        payload: id
+      });
+    })
+    .catch(console.log('something is not working'));
 };
 
 // Set Loading

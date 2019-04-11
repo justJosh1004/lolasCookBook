@@ -2,7 +2,8 @@ import {
   GET_RECIPES,
   LOADING_RECIPES,
   GET_RECIPE,
-  CREATE_RECIPE
+  CREATE_RECIPE,
+  DELETE_RECIPE
 } from '../actions/types';
 
 const initialState = {
@@ -33,6 +34,11 @@ export default (state = initialState, action) => {
       console.log(`Creating a New Recipe with: `);
       console.log(action.payload);
       return state;
+    case DELETE_RECIPE:
+      return {
+        ...state,
+        recipes: state.recipes.filter(recipe => recipe._id !== action.payload)
+      };
     default:
       return state;
   }
