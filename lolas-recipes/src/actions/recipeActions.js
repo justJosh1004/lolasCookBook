@@ -1,11 +1,6 @@
 import axios from 'axios';
 
-import {
-  GET_RECIPES,
-  LOADING_RECIPES,
-  GET_RECIPE,
-  CREATE_RECIPE
-} from './types';
+import { GET_RECIPES, LOADING_RECIPES, GET_RECIPE } from './types';
 
 // Get all recipes
 export const getAllRecipes = () => dispatch => {
@@ -48,11 +43,8 @@ export const getRecipe = id => dispatch => {
 };
 
 // Create recipe
-export const createRecipe = formValues => dispatch => {
-  dispatch({
-    type: CREATE_RECIPE,
-    payload: formValues
-  });
+export const createRecipe = (formValues, history) => dispatch => {
+  axios.post('/api/recipes', formValues).then(res => history.push('/admin'));
 };
 
 // Set Loading

@@ -14,13 +14,13 @@ module.exports = function validateRecipeInput(data) {
     errors.name = 'A recipe name is required';
   }
 
-  if (Validator.isEmpty(data.ing)) {
-    errors.ing = 'An ingredient is required';
-  }
+  // if (Validator.isEmpty(data.ing)) {
+  //   errors.ing = 'An ingredient is required';
+  // }
 
-  if (Validator.isEmpty(data.text)) {
-    errors.text = 'A description of the step is required';
-  }
+  // if (Validator.isEmpty(data.text)) {
+  //   errors.text = 'A description of the step is required';
+  // }
 
   return {
     errors,
