@@ -17,7 +17,11 @@ class RecipeForm extends Component {
         return { ...step, steps: index + 1 };
       });
     }
-    updatedFormValues = { name: formValues.name, steps: stepFix };
+    updatedFormValues = {
+      name: formValues.name,
+      ingredients: formValues.ingredients,
+      steps: stepFix
+    };
     return updatedFormValues;
   };
 
@@ -132,7 +136,7 @@ class RecipeForm extends Component {
         <FieldArray name="steps" component={this.renderAddSteps} />
         <Divider />
         {/* Redirect back to admin page once done with the form */}
-        <Button onClick={this.onSubmit} floated="right" color="olive">
+        <Button floated="right" color="olive">
           Add Recipe
         </Button>
       </Form>
@@ -148,7 +152,5 @@ const validate = formValues => {
 
 export default reduxForm({
   form: 'recipeForm',
-  enableReinitialize: true,
-  updateUnregisteredFields: true,
   validate
 })(RecipeForm);
