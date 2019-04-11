@@ -45,9 +45,11 @@ class ManageRecipes extends Component {
                 (recipeItems = recipes.map(recipe => (
                   <List.Item key={recipe._id}>
                     <List.Content floated="right">
-                      <Button inverted color="orange">
-                        Edit
-                      </Button>
+                      <Link to={`/admin/edit-recipe/${recipe._id}`}>
+                        <Button inverted color="orange">
+                          Edit
+                        </Button>
+                      </Link>
                       <Button
                         onClick={() => this.onDeleteClick(recipe._id)}
                         inverted

@@ -101,7 +101,7 @@ class RecipeForm extends Component {
             </Button>
             <List.Header>Step #{index + 1}</List.Header>
             <Field
-              name={`${step}.ing`}
+              name={`${step}.text`}
               component={TextAreaField}
               label="Step Instructions"
               placeholder="Describe this step"
@@ -111,7 +111,6 @@ class RecipeForm extends Component {
               name={`${step}.step`}
               component={this.stepNumberField}
               defaultValue={index + 1}
-              // input={index + 1}
             />
           </List.Content>
         </List.Item>
@@ -135,7 +134,6 @@ class RecipeForm extends Component {
         <Divider />
         <FieldArray name="steps" component={this.renderAddSteps} />
         <Divider />
-        {/* Redirect back to admin page once done with the form */}
         <Button floated="right" color="olive">
           Add Recipe
         </Button>

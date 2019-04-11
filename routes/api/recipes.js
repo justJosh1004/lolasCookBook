@@ -63,15 +63,31 @@ router.post('/', (req, res) => {
   recipeFields.recipe = req.body.name;
   if (req.body.name) recipeFields.name = req.body.name;
 
-  recipeFields.ingredients = {};
-  if (req.body.ing) recipeFields.ingredients.ing = req.body.ing;
-  if (req.body.quantity) recipeFields.ingredients.quantity = req.body.quantity;
-  if (req.body.measurement)
-    recipeFields.ingredients.measurement = req.body.measurement;
+  recipeFields.ingredients = [];
+  if (req.body.ingredients) {
+    req.body.ingredients.map(ingredient => {
+      let ingDetail = {};
 
-  recipeFields.steps = {};
-  if (req.body.step) recipeFields.steps.step = req.body.step;
-  if (req.body.text) recipeFields.steps.text = req.body.text;
+      if (ingredient.ing) ingDetail.ing = ingredient.ing;
+      if (ingredient.quantity) ingDetail.quantity = ingredient.quantity;
+      if (ingredient.measurement)
+        ingDetail.measurement = ingredient.measurement;
+
+      recipeFields.ingredients.push(ingDetail);
+    });
+  }
+
+  recipeFields.steps = [];
+  if (req.body.steps) {
+    req.body.steps.map(step => {
+      let stepDetail = {};
+
+      if (step.step) stepDetail.step = step.step;
+      if (step.text) stepDetail.text = step.text;
+
+      recipeFields.steps.push(stepDetail);
+    });
+  }
 
   Recipe.findOne({ name: req.body.name }).then(recipe => {
     if (recipe) {
@@ -82,7 +98,9 @@ router.post('/', (req, res) => {
       ).then(recipe => res.json(recipe));
       // res.json({ msg: 'Recipe already exists' });
     } else {
-      new Recipe(recipeFields).save().then(recipe => res.json(recipe));
+      new Recipe(recipeFields).save().then(recipe => {
+        return res.json(recipe);
+      });
     }
   });
 });

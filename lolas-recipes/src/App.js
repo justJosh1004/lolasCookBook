@@ -14,6 +14,7 @@ import Recipes from './components/recipes/Recipes';
 import Recipe from './components/recipes/Recipe';
 import Admin from './components/admin/Admin';
 import RecipeAdd from './components/admin/RecipeAdd';
+import RecipeEdit from './components/admin/RecipeEdit';
 
 class App extends Component {
   render() {
@@ -29,6 +30,11 @@ class App extends Component {
               <Route exact path="/recipes/:id" component={Recipe} />
               <Route exact path="/admin" component={Admin} />
               <Route exact path="/admin/add-recipe" component={RecipeAdd} />
+              <Route
+                exact
+                path="/admin/edit-recipe/:id"
+                component={RecipeEdit}
+              />
             </Container>
           </Router>
         </Provider>
