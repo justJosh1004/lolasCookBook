@@ -9,7 +9,7 @@ import RecipeForm from './RecipeForm';
 class RecipeAdd extends Component {
   onSubmit = formValues => {
     console.log(formValues);
-    this.props.createRecipe(formValues);
+    // this.props.createRecipe(formValues);
   };
 
   render() {
@@ -17,6 +17,7 @@ class RecipeAdd extends Component {
       <div>
         <div className="admin-title">Add a Recipe</div>
         <Link to="/admin">
+          {/* Check to see if the form was touched. Ask if they want to save changes */}
           <Button fluid attached="top" color="yellow">
             Go Back
           </Button>

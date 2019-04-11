@@ -1,47 +1,26 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import { Form, Button, Message, Divider, List } from 'semantic-ui-react';
-import { InputField } from 'react-semantic-redux-form';
+import { Form, Button, Divider, List } from 'semantic-ui-react';
+import { InputField, TextAreaField } from 'react-semantic-redux-form';
 
 class RecipeForm extends Component {
-  state = {
-    ingredients: [{ name: 'Chicken' }]
-  };
-
-  renderError = ({ error, touched }) => {
-    if (touched && error) {
-      return <Message error content={error} />;
-    }
-  };
-
-  isValid = ({ error, touched }) => {
-    if (touched && error) {
-      return false;
-    } else if (touched) {
-      return true;
-    } else {
-      return null;
-    }
-  };
-
-  isInvalid = ({ error, touched, pristine }) => {
-    if (touched && error) {
-      return true;
-    } else if (pristine) {
-      return false;
-    } else {
-      return null;
-    }
-  };
-
   onSubmit = formValues => {
-    this.props.onSubmit(formValues);
+    this.props.onSubmit(this.setStepNumber(formValues));
   };
 
-  onAddIndgredientsClick = () => {
-    this.setState({ ...this.state });
-    console.log('Adding Ingredient');
-    console.log(this.state);
+  setStepNumber = formValues => {
+    let updatedFormValues;
+
+    if (formValues.steps) {
+      updatedFormValues = formValues.steps.map((step, index) => {
+        return { ...step, step: index + 1 };
+      });
+    }
+    return updatedFormValues;
+  };
+
+  stepNumberField = ({ input }) => {
+    return <input style={{ display: 'none' }} {...input} />;
   };
 
   renderAddIngredients = ({ fields }) => (
@@ -93,9 +72,48 @@ class RecipeForm extends Component {
     </List>
   );
 
+  renderAddSteps = ({ fields }) => (
+    <List>
+      <List.Item>
+        <Button
+          onClick={() => fields.push({})}
+          type="button"
+          fluid
+          color="orange">
+          Add Step
+        </Button>
+      </List.Item>
+      {fields.map((step, index) => (
+        <List.Item key={index}>
+          <List.Content>
+            <Button
+              type="button"
+              onClick={() => fields.remove(index)}
+              floated="right"
+              color="red">
+              Remove Step
+            </Button>
+            <List.Header>Step #{index + 1}</List.Header>
+            <Field
+              name={`${step}.ing`}
+              component={TextAreaField}
+              label="Step Instructions"
+              placeholder="Describe this step"
+              required
+            />
+            <Field
+              name={`${step}.step`}
+              component={this.stepNumberField}
+              defaultValue={index + 1}
+              // input={index + 1}
+            />
+          </List.Content>
+        </List.Item>
+      ))}
+    </List>
+  );
+
   render() {
-    console.log(this.props
-      );
     return (
       <Form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
@@ -108,7 +126,8 @@ class RecipeForm extends Component {
           required
         />
         <FieldArray name="ingredients" component={this.renderAddIngredients} />
-
+        <Divider />
+        <FieldArray name="steps" component={this.renderAddSteps} />
         <Divider />
         {/* Redirect back to admin page once done with the form */}
         <Button onClick={this.onSubmit} floated="right" color="olive">
@@ -127,5 +146,7 @@ const validate = formValues => {
 
 export default reduxForm({
   form: 'recipeForm',
+  enableReinitialize: true,
+  updateUnregisteredFields: true,
   validate
 })(RecipeForm);
