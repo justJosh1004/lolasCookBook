@@ -8,8 +8,7 @@ import RecipeForm from './RecipeForm';
 
 class RecipeAdd extends Component {
   onSubmit = formValues => {
-    console.log(formValues);
-    // this.props.createRecipe(formValues);
+    this.props.createRecipe(formValues);
   };
 
   render() {

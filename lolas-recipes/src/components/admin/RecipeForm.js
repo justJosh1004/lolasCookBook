@@ -10,12 +10,14 @@ class RecipeForm extends Component {
 
   setStepNumber = formValues => {
     let updatedFormValues;
+    let stepFix;
 
     if (formValues.steps) {
-      updatedFormValues = formValues.steps.map((step, index) => {
-        return { ...step, step: index + 1 };
+      stepFix = formValues.steps.map((step, index) => {
+        return { ...step, steps: index + 1 };
       });
     }
+    updatedFormValues = { name: formValues.name, steps: stepFix };
     return updatedFormValues;
   };
 
